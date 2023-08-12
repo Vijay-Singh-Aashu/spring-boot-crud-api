@@ -1,9 +1,9 @@
 package com.excellence.springbootcrudapisecurity.models;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tasks")
-public class Task implements Serializable {
+public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -28,10 +28,10 @@ public class Task implements Serializable {
 	private String description;
 	private LocalDate dueDate;
 	private String status; // To-Do, In Progress, Completed
-	
-	@ManyToOne
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	private User assignedUser;
-	
+
 	@ElementCollection
 	private List<String> tags; // multiple tags
 

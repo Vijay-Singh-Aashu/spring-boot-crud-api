@@ -1,6 +1,6 @@
 package com.excellence.springbootcrudapisecurity.models;
 
-import java.io.Serializable;
+import org.springframework.boot.autoconfigure.info.ProjectInfoProperties.Build;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "build")
 @NoArgsConstructor
 @Table(name = "users")
-public class User implements Serializable {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
