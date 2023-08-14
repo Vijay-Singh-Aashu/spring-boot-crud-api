@@ -22,4 +22,11 @@ public class UserDto {
 	private String password;
 	private String role; // user, admin
 
+	public UserDto(@NotNull(message = "username shouldn't be null") String username,
+			@Email(message = "invalid email address") String email, String role) {
+		this.username = username;
+		this.email = email;
+		this.role = role;
+	}
+
 }

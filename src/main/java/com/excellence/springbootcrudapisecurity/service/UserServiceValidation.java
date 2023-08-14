@@ -34,6 +34,10 @@ public class UserServiceValidation {
 			throw new UserNotFoundException("user not found with id : "+id);
 		}
 	}
+	
+	public List<User> getUsers(int id) throws UserNotFoundException {
+		return userRepository.findByUserId(id);
+	}
 
 	
 }
