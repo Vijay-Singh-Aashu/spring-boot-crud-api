@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.excellence.springbootcrudapisecurity.exception.EmptyInputException;
 import com.excellence.springbootcrudapisecurity.models.Task;
 import com.excellence.springbootcrudapisecurity.repository.TaskRepository;
 
@@ -21,7 +22,13 @@ public class TaskService {
 
 	// Create a new task
 	public Task createTask(Task task) {
-		return taskRepository.save(task);
+		
+		if (task.getTitle().isEmpty() || task.getTitle().length() == 0) {
+			throw new EmptyInputException("601", "Input Fields are empty");
+		}
+		Task task2 = taskRepository.save(task);
+		
+		return task2;
 	}
 
 	// Get all tasks

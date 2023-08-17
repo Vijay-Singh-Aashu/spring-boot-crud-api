@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.excellence.springbootcrudapisecurity.dto.UserDto;
 import com.excellence.springbootcrudapisecurity.exception.UserNotFoundException;
 import com.excellence.springbootcrudapisecurity.models.User;
 import com.excellence.springbootcrudapisecurity.repository.UserRepository;
