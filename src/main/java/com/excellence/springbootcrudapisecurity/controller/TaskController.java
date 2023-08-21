@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,7 @@ import com.excellence.springbootcrudapisecurity.service.TaskService;
 
 @RestController
 @RequestMapping("/api/tasks")
+@EnableCaching
 public class TaskController {
 
 	private final TaskService taskService;
@@ -42,6 +44,7 @@ public class TaskController {
 	}
 
 	@GetMapping("/{taskId}")
+	@org.springframework.cache.annotation.Cacheable(value = "tasks", key = "#taskId")
 	public ResponseEntity<Task> getTaskById(@PathVariable Long taskId) {
 		Optional<Task> task = taskService.getTaskById(taskId);
 		return task.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
